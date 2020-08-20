@@ -1,4 +1,5 @@
 import firebase, { database } from '../../firebase';
+import { auth } from 'firebase';
 
 export const actionUsername = () => (dispatch) => {
     setTimeout(() => {
@@ -101,4 +102,8 @@ export const deleteDataAPI = (data) => (dispatch) => {
     return new Promise((resolve, reject) => {
         urlNotes.remove();
     })
+}
+
+export const logout = () => (dispatch) => {
+    auth.signOut()
 }

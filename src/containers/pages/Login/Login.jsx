@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './Login.css';
+import {useHistory} from 'react-router-dom'
 import Button from '../../../component/atoms/Button';
 import { connect } from 'react-redux';
 import { loginUserAPI } from '../../../config/redux/action';
@@ -38,14 +39,19 @@ class Login extends Component {
         }
     }
 
+
     render() {
+        const history = useHistory()
         return (
             <div className="auth-container" >
                 <div className="auth-card">
                     <p className="auth-title">Welcome</p>
                     <input className="input" id="email" placeholder="Email" type="text" onChange={this.handleChangeText} value={this.state.email} />
                     <input className="input" id="password" placeholder="Password" type="password" onChange={this.handleChangeText} value={this.state.password} />
+                    <div className="auth-button">
                     <Button onClick={this.handleLoginSubmit} title="Login" loading={this.props.isLoading} />
+                    <Button onClick={() => history.push('/Register')} title="Register" />
+                    </div>
                 </div>
             </div>
         )

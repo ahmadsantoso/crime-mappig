@@ -55,3 +55,7 @@ button.btn{
     cursor: pointer;
 }
 
+.auth-button{
+    display: flex;
+}
+
