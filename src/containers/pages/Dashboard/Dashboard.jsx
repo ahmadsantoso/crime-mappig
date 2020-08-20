@@ -1,27 +1,42 @@
-import React, { Component, Fragment } from 'react';
-import './Dashboard.css';
-import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
+import React, { useState } from "react";
+import "./Dashboard.css";
+import { connect } from "react-redux";
+import { Link, Redirect } from "react-router-dom";
 
+import Image from "../../../assets/img/thumbnail/Dashboard.png";
 
-class Dashboard extends Component {
-    render() {
-        return (
-            <div className="container">
-                 <h1 className="header">CRIME MAPPING</h1>
-                <div className="list">
-                    <ul>
-                        <li><Link to="/Dashboard/Laporan Kejahatan">Laporan Kejahatan</Link></li>
-                    </ul>
-                </div>
-                <img src="../src/img/thumbnail/Dashboard.png" alt="Image" width="100%"/>
-            </div>     
-        )
-    }
-}
+const Dashboard = () => {
+  const [isRedirect, setRedirect] = useState(false);
+
+  const logOut = () => {
+    setRedirect(true);
+    localStorage.clear();
+  };
+
+  if (isRedirect) {
+    return <Redirect to="/login" />;
+  }
+
+  return (
+    <div className="container">
+      <h1 className="header">CRIME MAPPING</h1>
+      <div className="list">
+        <ul>
+          <li>
+            <Link to="/Dashboard/Laporan Kejahatan">Laporan Kejahatan</Link>
+          </li>
+          <li onClick={logOut}>
+            <Link>Logout</Link>
+          </li>
+        </ul>
+      </div>
+      <img src={Image} alt="dashboard_image" width="100%" />
+    </div>
+  );
+};
 
 const reduxState = (state) => ({
-    userData: state.user,
-})
+  userData: state.user,
+});
 
-export default connect(reduxState, )(Dashboard);
+export default connect(reduxState)(Dashboard);

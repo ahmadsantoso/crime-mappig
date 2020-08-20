@@ -1,62 +1,78 @@
-import React, { Component } from 'react';
-import './Login.css';
-import {useHistory} from 'react-router-dom'
-import Button from '../../../component/atoms/Button';
-import { connect } from 'react-redux';
-import { loginUserAPI } from '../../../config/redux/action';
+import React, { useState } from "react";
+import "./Login.css";
+import { useHistory } from "react-router-dom";
+import Button from "../../../component/atoms/Button";
+import { useSelector, useDispatch } from "react-redux";
+import { loginUserAPI } from "../../../config/redux/action";
 //import { actionUsername } from '../../../config/redux/action';
 
-class Login extends Component {
-    //changeUser = () => {
-    //    this.props.changeUserName()
-    //}
+const initialState = {
+  email: "",
+  password: "",
+};
 
-    state = {
-        email: '',
-        password: '',
+const Login = () => {
+  const [{ email, password }, setState] = useState(initialState);
+  const history = useHistory();
+
+  const isLoading = useSelector((state) => state.isLoading);
+  const dispatch = useDispatch();
+
+  const loginAPI = (data) => dispatch(loginUserAPI(data));
+
+  const handleChangeText = (e) => {
+    const { id, value } = e.target;
+    setState((state) => ({ ...state, [id]: value }));
+  };
+
+  const handleLoginSubmit = async () => {
+    try {
+      const res = await loginAPI({ email, password });
+      localStorage.setItem("userData", JSON.stringify(res));
+      setState({
+        email: "",
+        password: "",
+      });
+      history.push("/Dashboard");
+      console.log("LOGIN SUCCESS", res);
+      return res;
+    } catch (error) {
+      console.log(error, "error");
     }
+  };
 
-    handleChangeText = (e) => {
-        this.setState({
-            [e.target.id]: e.target.value,
-        })
-    }
-
-    handleLoginSubmit = async () => {
-        const { email, password } = this.state;
-        const { history } = this.props;
-        const res = await this.props.loginAPI({ email, password }).catch(err => err);
-        if (res) {
-            console.log('LOGIN SUCCESS', res)
-            localStorage.setItem('userData', JSON.stringify(res))
-            this.setState({
-                email: '',
-                password: ''
-            })
-            history.push('/Dashboard')
-        } else {
-            alert('LOGIN FAILED')
-        }
-    }
-
-
-    render() {
-        const history = useHistory()
-        return (
-            <div className="auth-container" >
-                <div className="auth-card">
-                    <p className="auth-title">Welcome</p>
-                    <input className="input" id="email" placeholder="Email" type="text" onChange={this.handleChangeText} value={this.state.email} />
-                    <input className="input" id="password" placeholder="Password" type="password" onChange={this.handleChangeText} value={this.state.password} />
-                    <div className="auth-button">
-                    <Button onClick={this.handleLoginSubmit} title="Login" loading={this.props.isLoading} />
-                    <Button onClick={() => history.push('/Register')} title="Register" />
-                    </div>
-                </div>
-            </div>
-        )
-    }
-}
+  return (
+    <div className="auth-container">
+      <div className="auth-card">
+        <p className="auth-title">Welcome</p>
+        <input
+          className="input"
+          id="email"
+          placeholder="Email"
+          type="text"
+          onChange={handleChangeText}
+          value={email}
+        />
+        <input
+          className="input"
+          id="password"
+          placeholder="Password"
+          type="password"
+          onChange={handleChangeText}
+          value={password}
+        />
+        <div className="auth-button">
+          <Button
+            onClick={handleLoginSubmit}
+            title="Login"
+            loading={isLoading}
+          />
+          <Button onClick={() => history.push("/Register")} title="Register" />
+        </div>
+      </div>
+    </div>
+  );
+};
 
 //const reduxState = (state) => ({
 //    popupProps: state.popup,
@@ -67,13 +83,14 @@ class Login extends Component {
 //    changeUserName: () => dispatch(actionUsername())
 //})
 
-const reduxState = (state) => ({
-    isLoading: state.isLoading
-})
+// const reduxState = (state) => ({
+//   isLoading: state.isLoading,
+// });
 
-const reduxDispatch = (dispatch) => ({
-    loginAPI: (data) => dispatch(loginUserAPI(data))
-})
+// const reduxDispatch = (dispatch) => ({
+//   loginAPI: (data) => dispatch(loginUserAPI(data)),
+// });
 
+// export default connect(reduxState, reduxDispatch)(Login);
 
-export default connect(reduxState, reduxDispatch)(Login);
+export default Login;
