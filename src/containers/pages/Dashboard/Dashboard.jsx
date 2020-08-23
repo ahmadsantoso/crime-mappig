@@ -23,7 +23,7 @@ const Dashboard = () => {
       <div className="list">
         <ul>
           <li>
-            <Link to="/Dashboard/Laporan Kejahatan">Laporan Kejahatan</Link>
+            <Link to="/Dashboard/Laporan-Kejahatan">Laporan Kejahatan</Link>
           </li>
           <li onClick={logOut}>
             <Link>Logout</Link>
