@@ -198,9 +198,9 @@ const Laporan = () => {
                 </button>
                 <p className="title">{note.data.kejahatan}</p>
                 <p className="date">{note.data.date}</p>
-                <p className="content">{note.data.nama}</p>
-                <p className="content">{note.data.telpon}</p>
-                <p className="content">{note.data.alamat}</p>
+                <p className="date">{note.data.alamat}</p>
+                <p className="nama">{note.data.nama}</p>
+                <p className="date">{note.data.telpon}</p>
                 <p className="content">{note.data.deskripsi}</p>
               </div>
             );

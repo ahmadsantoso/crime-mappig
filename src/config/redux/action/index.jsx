@@ -60,7 +60,7 @@ export const addDataToAPI = (data) => (dispatch) => {
         date: data.date,
         nama: data.nama,
         telpon: data.telpon,
-        alamat: data.alamt,
+        alamat: data.alamat,
         deskripsi: data.deskripsi
     })
 }
@@ -91,7 +91,7 @@ export const updateDataAPI = (data) => (dispatch) => {
             date: data.date,
             nama: data.nama,
             telpon: data.telpon,
-            alamat: data.alamt,
+            alamat: data.alamat,
             deskripsi: data.deskripsi
         }, (err) => {
             if (err) {
