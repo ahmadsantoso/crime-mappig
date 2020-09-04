@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-//import './Register.scss';
+import './Register.css';
 import Button from '../../../component/atoms/Button';
 import { connect } from 'react-redux';
 import { registerUserAPI } from '../../../config/redux/action';

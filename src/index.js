@@ -5,11 +5,11 @@ import App from './containers/pages/App/index';
 import * as serviceWorker from './serviceWorker';
 import firebase from './config/firebase/index';
 
-ReactDOM.render(<
-  React.StrictMode > <
-    App />
+ReactDOM.render( 
+  <React.StrictMode >
   <
-  /React.StrictMode>,
+  App />  
+  </React.StrictMode>,
   document.getElementById('root')
 );
 
