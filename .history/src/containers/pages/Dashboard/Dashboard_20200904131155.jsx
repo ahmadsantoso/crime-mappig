@@ -21,7 +21,7 @@ const Dashboard = () => {
 
   const MapWithAMarker = withScriptjs(withGoogleMap(props =>
     <GoogleMap
-      defaultZoom={11}
+      defaultZoom={10}
       defaultCenter={{ lat: -6.130754, lng: 106.8565124 }}
     >
       <Marker
@@ -56,23 +56,12 @@ const Dashboard = () => {
           mapElement={<div style={{ height: `100%` }} />}
         />
       </div>
-      <div classname="dropdown">
-        <select>
-          <option selected value="Laporan">Semua Laporan</option>
-          <option value="valid">Valid</option>
-          <option value="notvalid">Tidak Valid</option>
-          <option value="onprocess">Sudah di Proses</option>
-          <option value="notprocess">Belum di Proses</option>
-        </select>
-      </div>
-      <div className="tab-legend">
-        <ul>
-          <li className="valid">Valid</li>
-          <li className="notvalid">Tidak Valid</li>
-          <li className="onprocess">Sudah di Proses</li>
-          <li className="notprocess">Belum di Proses</li>
-        </ul>
-      </div>
+      <ul className="tab-legend">
+        <li>Valid</li>
+        <li>Tidak Valid</li>
+        <li>Sudah di Proses</li>
+        <li>Belum di Proses</li>
+      </ul>
     </div >
   );
 };

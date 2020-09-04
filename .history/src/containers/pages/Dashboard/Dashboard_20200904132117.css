@@ -10,7 +10,7 @@
 }
 
 img {
-  width: 160px;
+  width: 110px;
 }
 
 .nav-img {
@@ -41,10 +41,6 @@ img {
   padding-top: 20px;
   width: 100%;
   height: 20%;
-}
-
-.dropdown {
-  margin-top: 20px;
 }
 
 li {

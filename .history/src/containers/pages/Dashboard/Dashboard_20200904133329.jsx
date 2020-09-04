@@ -56,7 +56,7 @@ const Dashboard = () => {
           mapElement={<div style={{ height: `100%` }} />}
         />
       </div>
-      <div classname="dropdown">
+      <div>
         <select>
           <option selected value="Laporan">Semua Laporan</option>
           <option value="valid">Valid</option>

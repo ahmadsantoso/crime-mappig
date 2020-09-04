@@ -56,14 +56,12 @@ const Dashboard = () => {
           mapElement={<div style={{ height: `100%` }} />}
         />
       </div>
-      <div classname="dropdown">
-        <select>
-          <option selected value="Laporan">Semua Laporan</option>
-          <option value="valid">Valid</option>
-          <option value="notvalid">Tidak Valid</option>
-          <option value="onprocess">Sudah di Proses</option>
-          <option value="notprocess">Belum di Proses</option>
-        </select>
+      <div>
+        <option selected value="Laporan">Semua Laporan</option>
+        <option value="valid">Valid</option>
+        <option value="notvalid">Tidak Valid</option>
+        <option value="onprocess">Sudah di Proses</option>
+        <option value="notprocess">Belum di Proses</option>
       </div>
       <div className="tab-legend">
         <ul>
