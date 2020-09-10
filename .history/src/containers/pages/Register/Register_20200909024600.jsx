@@ -37,6 +37,7 @@ const Register = () => {
             return res;
         } catch (error) {
             console.log(error);
+            //alert("REGISTER FAILED");
         }
     };
 

@@ -36,7 +36,8 @@ const Register = () => {
             console.log("REGISTER SUCCESS", res);
             return res;
         } catch (error) {
-            console.log(error);
+            consoloe.log(error);
+            alert("REGISTER FAILED");
         }
     };
 

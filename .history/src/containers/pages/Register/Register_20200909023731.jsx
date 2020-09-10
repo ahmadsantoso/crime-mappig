@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import './Register.css';
-import { useHistory } from "react-router-dom";
 import Button from '../../../component/atoms/Button';
 import { useSelector, useDispatch } from 'react-redux';
 import { registerUserAPI } from '../../../config/redux/action';
@@ -36,7 +35,7 @@ const Register = () => {
             console.log("REGISTER SUCCESS", res);
             return res;
         } catch (error) {
-            console.log(error);
+            alert(error, "REGISTER FAILED");
         }
     };
 
@@ -61,6 +60,4 @@ const Register = () => {
 //     registerAPI: (data) => dispatch(registerUserAPI(data))
 // })
 
-//export default connect(reduxState, reduxDispatch)(Register);
-
-export default Register;
+export default connect(reduxState, reduxDispatch)(Register);

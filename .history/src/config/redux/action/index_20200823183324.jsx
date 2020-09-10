@@ -19,7 +19,7 @@ export const registerUserAPI = (data) => (dispatch) => {
             .catch(function (error) {
                 var errorCode = error.code;
                 var errorMessage = error.message;
-                alert(errorMessage)
+                console.log(errorCode, errorMessage)
                 dispatch({ type: 'CHANGE_LOADING', value: false })
                 reject(false)
             })
@@ -46,7 +46,7 @@ export const loginUserAPI = (data) => (dispatch) => {
             .catch(function (error) {
                 var errorCode = error.code;
                 var errorMessage = error.message;
-                alert(errorMessage)
+                console.log(errorCode, errorMessage)
                 dispatch({ type: 'CHANGE_LOADING', value: false })
                 dispatch({ type: 'CHANGE_ISLOGIN', value: false })
                 reject(false)

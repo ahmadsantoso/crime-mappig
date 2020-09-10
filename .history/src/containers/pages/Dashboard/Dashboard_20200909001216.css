@@ -43,8 +43,8 @@ img {
   height: 20%;
 }
 
-.dropdown {
-  margin-top: 1rem !important
+option {
+  margin-top: 20px;
 }
 
 ul {

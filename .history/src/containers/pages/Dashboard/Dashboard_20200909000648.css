@@ -44,10 +44,11 @@ img {
 }
 
 .dropdown {
-  margin-top: 1rem !important
+  margin-top: 1rem;
 }
 
-ul {
+.nav-legend {
+  margin: 0;
   padding: 0;
 }
 
