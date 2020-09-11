@@ -3,21 +3,16 @@ import "./Analisa.css";
 import { format } from "date-fns";
 import { connect, useSelector, useDispatch } from "react-redux";
 import { useHistory, NavLink, Redirect } from "react-router-dom";
-import { PieChart, Pie, Sector, Cell } from "recharts";
+import { PieChart, Pie, Sector, Cell } from Recharts;
 import Logo from "../../../assets/img/logo/logo.png";
 
 const Analisa = () => {
   const [isRedirect, setRedirect] = useState(false);
   const history = useHistory();
 
-  const report = [
-    { name: 'Jakarta Pusat', value: 500 },
-    { name: 'Jakarta Timur', value: 400 },
-    { name: 'Jakarta Selatan', value: 300 },
-    { name: 'Jakarta Barat', value: 200 },
-    { name: 'Jakarta Utara', value: 100 }];
-
-  const COLORS = ['#0088FE', '#ca09c7', '#fc1500', '#3df70f', '#fa7f52'];
+  const data = [{ name: 'Group A', value: 400 }, { name: 'Group B', value: 300 },
+  { name: 'Group C', value: 300 }, { name: 'Group D', value: 200 }];
+  const COLORS = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042'];
 
   const RADIAN = Math.PI / 180;
   const renderCustomizedLabel = ({ cx, cy, midAngle, innerRadius, outerRadius, percent, index }) => {
@@ -59,34 +54,22 @@ const Analisa = () => {
         >logout
         </button>
       </div>
-      <h3>Diagram Tingkat Kejahatan</h3>
-      <div className="pie-chart">
-        <PieChart width={800} height={400}>
-          <Pie
-            data={report}
-            cx={300}
-            cy={200}
-            labelLine={false}
-            label={renderCustomizedLabel}
-            outerRadius={80}
-            fill="#8884d8"
-          >
-            {
-              report.map((entry, index) => <Cell fill={COLORS[index % COLORS.length]} />)
-            }
-          </Pie>
-        </PieChart>
-      </div>
-      <div className="tab-legend">
-        <ul>
-          <li className="kondusif">Kondusif</li>
-          <li className="cen-kon">Cenderung Kondusif</li>
-          <li className="rawan">Rawan</li>
-          <li className="lum-raw">Cukup Rawan</li>
-          <li className="san-raw">Sangat Rawan</li>
-        </ul>
-      </div>
-    </div >
+      <PieChart width={800} height={400} onMouseEnter={this.onPieEnter}>
+        <Pie
+          data={data}
+          cx={300}
+          cy={200}
+          labelLine={false}
+          label={renderCustomizedLabel}
+          outerRadius={80}
+          fill="#8884d8"
+        >
+          {
+            data.map((entry, index) => <Cell fill={COLORS[index % COLORS.length]} />)
+          }
+        </Pie>
+      </PieChart>
+    </div>
   );
 };
 

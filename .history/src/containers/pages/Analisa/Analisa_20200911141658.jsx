@@ -17,7 +17,7 @@ const Analisa = () => {
     { name: 'Jakarta Barat', value: 200 },
     { name: 'Jakarta Utara', value: 100 }];
 
-  const COLORS = ['#0088FE', '#ca09c7', '#fc1500', '#3df70f', '#fa7f52'];
+  const COLORS = ['#0088FE', '#ed87eb', '#fc1500', '#3df70f', '#fa7f52'];
 
   const RADIAN = Math.PI / 180;
   const renderCustomizedLabel = ({ cx, cy, midAngle, innerRadius, outerRadius, percent, index }) => {

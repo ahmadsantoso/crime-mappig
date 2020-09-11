@@ -17,7 +17,7 @@ const Analisa = () => {
     { name: 'Jakarta Barat', value: 200 },
     { name: 'Jakarta Utara', value: 100 }];
 
-  const COLORS = ['#0088FE', '#ca09c7', '#fc1500', '#3df70f', '#fa7f52'];
+  const COLORS = ['#0088FE', '#ed87eb', '#fc1500', '#3df70f', '#fa7f52'];
 
   const RADIAN = Math.PI / 180;
   const renderCustomizedLabel = ({ cx, cy, midAngle, innerRadius, outerRadius, percent, index }) => {
@@ -79,11 +79,10 @@ const Analisa = () => {
       </div>
       <div className="tab-legend">
         <ul>
-          <li className="kondusif">Kondusif</li>
-          <li className="cen-kon">Cenderung Kondusif</li>
-          <li className="rawan">Rawan</li>
-          <li className="lum-raw">Cukup Rawan</li>
-          <li className="san-raw">Sangat Rawan</li>
+          <li className="valid">Valid</li>
+          <li className="notvalid">Tidak Valid</li>
+          <li className="onprocess">Sudah di Proses</li>
+          <li className="notprocess">Belum di Proses</li>
         </ul>
       </div>
     </div >

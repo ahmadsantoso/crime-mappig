@@ -1,0 +1,9 @@
+.container {
+    display: block;
+    margin: auto;
+}
+
+PieChart {
+    width: 800px;
+    height: 400px;
+}

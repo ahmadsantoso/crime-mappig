@@ -1,0 +1,10 @@
+.container {
+    display: block;
+    margin: auto;
+}
+
+.pie-chart {
+    padding-top: 20px;
+    width: 50%;
+    height: 20%;
+}
