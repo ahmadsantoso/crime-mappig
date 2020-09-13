@@ -55,7 +55,7 @@ const Dashboard = () => {
     </GoogleMap>;
   }
   ));
-  console.log(crimes);
+
   return (
     <div className="container">
       <NavLink className="nav-img" to="/Dashboard"> <img src={Logo} alt="logo" /> </NavLink>

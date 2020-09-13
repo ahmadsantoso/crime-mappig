@@ -5,7 +5,6 @@ import Logo from "../../../assets/img/logo/logo.png";
 import { connect } from "react-redux";
 import { useHistory, NavLink, Redirect } from "react-router-dom";
 import { GoogleMap, Marker, withScriptjs, withGoogleMap, InfoWindow } from "react-google-maps";
-import * as crimes from "../../../assets/reports/reports.json"
 
 const Dashboard = () => {
   const [isRedirect, setRedirect] = useState(false);
@@ -31,12 +30,12 @@ const Dashboard = () => {
     return <Redirect to="/login" />;
   }
 
-  const WrappedMap = withScriptjs(withGoogleMap(() => {
-    return <GoogleMap
+  const WrappedMap = withScriptjs(withGoogleMap(() =>
+    <GoogleMap
       defaultZoom={11}
       defaultCenter={{ lat: -6.130754, lng: 106.8565124 }}
     >
-      {crimes.features.map(crime => (
+      {/* {crimes.map(crime => (
         <Marker
           key={crime.id}
           position={{
@@ -45,17 +44,17 @@ const Dashboard = () => {
           }}
           onClick={() => {
             setSelectedCrime(crime);
-          }} />
+          }}
+        />
       ))}
       {selectedCrime && (
         <InfoWindow>
           <div>Mark Details</div>
         </InfoWindow>
-      )}
-    </GoogleMap>;
-  }
+      )} */}
+    </GoogleMap>
   ));
-  console.log(crimes);
+
   return (
     <div className="container">
       <NavLink className="nav-img" to="/Dashboard"> <img src={Logo} alt="logo" /> </NavLink>

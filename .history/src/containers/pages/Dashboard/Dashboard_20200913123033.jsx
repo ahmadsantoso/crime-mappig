@@ -5,21 +5,20 @@ import Logo from "../../../assets/img/logo/logo.png";
 import { connect } from "react-redux";
 import { useHistory, NavLink, Redirect } from "react-router-dom";
 import { GoogleMap, Marker, withScriptjs, withGoogleMap, InfoWindow } from "react-google-maps";
-import * as crimes from "../../../assets/reports/reports.json"
 
 const Dashboard = () => {
   const [isRedirect, setRedirect] = useState(false);
   const history = useHistory();
   const [selectedCrime, setSelectedCrime] = useState(null);
-  // const fetcher = (...args) => fetch(...args).then(response => response.json());
 
-  // const mapRef = useRef();
-  // const [bounds, setBounds] = useState(null);
-  // const url =
-  //   "https://data.police.uk/api/crimes-street/all-crime?lat=52.629729&lng=-1.131592&date=2019-10";
-  // const { data, error } = useSwr(url, { fetcher });
-  // const crimes = data && !error ? data.slice(0, 2000) : [];
+  const mapRef = useRef();
+  const [bounds, setBounds] = useState(null);
+  const url =
+    "https://data.police.uk/api/crimes-street/all-crime?lat=52.629729&lng=-1.131592&date=2019-10";
+  const { data, error } = useSwr(url, { fetcher });
+  const crimes = data && !error ? data.slice(0, 2000) : [];
 
+  const fetcher = (...args) => fetch(...args).then(response => response.json());
 
 
   const logOut = () => {
@@ -31,12 +30,12 @@ const Dashboard = () => {
     return <Redirect to="/login" />;
   }
 
-  const WrappedMap = withScriptjs(withGoogleMap(() => {
-    return <GoogleMap
+  const WrappedMap = withScriptjs(withGoogleMap(() =>
+    <GoogleMap
       defaultZoom={11}
-      defaultCenter={{ lat: -6.130754, lng: 106.8565124 }}
+      defaultCenter={{ lat: 52.6376, lng: -1.135171 }}
     >
-      {crimes.features.map(crime => (
+      {crimes.map(crime => (
         <Marker
           key={crime.id}
           position={{
@@ -45,17 +44,17 @@ const Dashboard = () => {
           }}
           onClick={() => {
             setSelectedCrime(crime);
-          }} />
+          }}
+        />
       ))}
       {selectedCrime && (
         <InfoWindow>
           <div>Mark Details</div>
         </InfoWindow>
       )}
-    </GoogleMap>;
-  }
+    </GoogleMap>
   ));
-  console.log(crimes);
+
   return (
     <div className="container">
       <NavLink className="nav-img" to="/Dashboard"> <img src={Logo} alt="logo" /> </NavLink>

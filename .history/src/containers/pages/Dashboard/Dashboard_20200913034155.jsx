@@ -1,26 +1,15 @@
-import React, { useState, useRef } from "react";
-import useSwr from "swr";
+import React, { useState } from "react";
 import "./Dashboard.css";
 import Logo from "../../../assets/img/logo/logo.png";
 import { connect } from "react-redux";
 import { useHistory, NavLink, Redirect } from "react-router-dom";
 import { GoogleMap, Marker, withScriptjs, withGoogleMap, InfoWindow } from "react-google-maps";
-import * as crimes from "../../../assets/reports/reports.json"
+import * as marksData from "../../../assets/laporan/laporan.json"
 
 const Dashboard = () => {
   const [isRedirect, setRedirect] = useState(false);
   const history = useHistory();
-  const [selectedCrime, setSelectedCrime] = useState(null);
-  // const fetcher = (...args) => fetch(...args).then(response => response.json());
-
-  // const mapRef = useRef();
-  // const [bounds, setBounds] = useState(null);
-  // const url =
-  //   "https://data.police.uk/api/crimes-street/all-crime?lat=52.629729&lng=-1.131592&date=2019-10";
-  // const { data, error } = useSwr(url, { fetcher });
-  // const crimes = data && !error ? data.slice(0, 2000) : [];
-
-
+  const [selectedMark, setSelectedMark] = useState(null);
 
   const logOut = () => {
     setRedirect(true);
@@ -31,31 +20,37 @@ const Dashboard = () => {
     return <Redirect to="/login" />;
   }
 
-  const WrappedMap = withScriptjs(withGoogleMap(() => {
-    return <GoogleMap
-      defaultZoom={11}
-      defaultCenter={{ lat: -6.130754, lng: 106.8565124 }}
-    >
-      {crimes.features.map(crime => (
-        <Marker
-          key={crime.id}
-          position={{
-            lat: selectedCrime.location.latitude,
-            lng: selectedCrime.location.longitude
-          }}
-          onClick={() => {
-            setSelectedCrime(crime);
-          }} />
-      ))}
-      {selectedCrime && (
-        <InfoWindow>
-          <div>Mark Details</div>
-        </InfoWindow>
-      )}
-    </GoogleMap>;
+
+  const Map = () => {
+    return (
+      <GoogleMap
+        defaultZoom={11}
+        defaultCenter={{ lat: -6.130754, lng: 106.8565124 }}
+      >
+        {marksData.features.map(mark => (
+          <Marker
+            key={mark.properties.MARK_ID}
+            position={{
+              lat: selectedMark.geometry.coordinates[1],
+              lng: selectedMark.geometry.coordinates[0]
+            }}
+            onClick={() => {
+              setSelectedMark(mark);
+            }}
+          />
+
+        ))}
+        {selectedMark && (
+          <InfoWindow>
+            <div>Mark Details</div>
+          </InfoWindow>
+        )}
+      </GoogleMap>
+    )
   }
-  ));
-  console.log(crimes);
+
+  const WrappedMap = withScriptjs(withGoogleMap(Map));
+
   return (
     <div className="container">
       <NavLink className="nav-img" to="/Dashboard"> <img src={Logo} alt="logo" /> </NavLink>

@@ -31,8 +31,8 @@ const Dashboard = () => {
     return <Redirect to="/login" />;
   }
 
-  const WrappedMap = withScriptjs(withGoogleMap(() => {
-    return <GoogleMap
+  const WrappedMap = withScriptjs(withGoogleMap((props) =>
+    <GoogleMap
       defaultZoom={11}
       defaultCenter={{ lat: -6.130754, lng: 106.8565124 }}
     >
@@ -40,22 +40,22 @@ const Dashboard = () => {
         <Marker
           key={crime.id}
           position={{
-            lat: selectedCrime.location.latitude,
+            lat: selectedCrime.location[0].latitude,
             lng: selectedCrime.location.longitude
           }}
           onClick={() => {
             setSelectedCrime(crime);
-          }} />
+          }}
+        />
       ))}
       {selectedCrime && (
         <InfoWindow>
           <div>Mark Details</div>
         </InfoWindow>
       )}
-    </GoogleMap>;
-  }
+    </GoogleMap>
   ));
-  console.log(crimes);
+
   return (
     <div className="container">
       <NavLink className="nav-img" to="/Dashboard"> <img src={Logo} alt="logo" /> </NavLink>

@@ -5,6 +5,7 @@
   "dependencies": {
     "@emotion/core": "^10.0.28",
     "@emotion/styled": "^10.0.27",
+    "@react-google-maps/api": "^1.10.1",
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.5.0",
     "@testing-library/user-event": "^7.2.1",
@@ -21,7 +22,9 @@
     "react-scripts": "3.4.1",
     "recharts": "^1.8.5",
     "redux": "^4.0.5",
-    "redux-thunk": "^2.3.0"
+    "redux-thunk": "^2.3.0",
+    "swr": "^0.3.2",
+    "use-supercluster": "^0.2.8"
   },
   "scripts": {
     "start": "react-scripts start",
