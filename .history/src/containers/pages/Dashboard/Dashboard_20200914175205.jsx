@@ -1,5 +1,4 @@
 import React, { useState, useRef } from "react";
-import dotenv from "dotenv";
 import useSwr from "swr";
 import "./Dashboard.css";
 import Logo from "../../../assets/img/logo/logo.png";
@@ -20,7 +19,7 @@ const Dashboard = () => {
   // const { data, error } = useSwr(url, { fetcher });
   // const crimes = data && !error ? data.slice(0, 2000) : [];
 
-  dotenv.config();
+
 
   const logOut = () => {
     setRedirect(true);
@@ -76,7 +75,7 @@ const Dashboard = () => {
       </div>
       <div className="map">
         <WrappedMap
-          googleMapURL={'https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places&key=AIzaSyCXH_d-DbxpEVyfunY8g8f9pVhC6dEX8bA'}
+          googleMapURL={process.env.OOGLE_KEY}
           loadingElement={<div style={{ height: `100%` }} />}
           containerElement={<div style={{ height: `400px` }} />}
           mapElement={<div style={{ height: `100%` }} />}

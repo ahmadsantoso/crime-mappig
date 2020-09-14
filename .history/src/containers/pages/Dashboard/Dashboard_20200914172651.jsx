@@ -1,11 +1,11 @@
 import React, { useState, useRef } from "react";
-import dotenv from "dotenv";
 import useSwr from "swr";
 import "./Dashboard.css";
 import Logo from "../../../assets/img/logo/logo.png";
 import { connect } from "react-redux";
 import { useHistory, NavLink, Redirect } from "react-router-dom";
 import { GoogleMap, Marker, withScriptjs, withGoogleMap, InfoWindow } from "react-google-maps";
+import * as crimes from "../../../assets/reports/reports.json"
 
 const Dashboard = () => {
   const [isRedirect, setRedirect] = useState(false);
@@ -20,7 +20,7 @@ const Dashboard = () => {
   // const { data, error } = useSwr(url, { fetcher });
   // const crimes = data && !error ? data.slice(0, 2000) : [];
 
-  dotenv.config();
+
 
   const logOut = () => {
     setRedirect(true);
@@ -36,7 +36,7 @@ const Dashboard = () => {
       defaultZoom={11}
       defaultCenter={{ lat: -6.130754, lng: 106.8565124 }}
     >
-      {/* {crimes.features.map(crime => (
+      {crimes.features.map(crime => (
         <Marker
           key={crime.id}
           position={{
@@ -51,11 +51,11 @@ const Dashboard = () => {
         <InfoWindow>
           <div>Mark Details</div>
         </InfoWindow>
-      )} */}
+      )}
     </GoogleMap>;
   }
   ));
-
+  console.log(crimes);
   return (
     <div className="container">
       <NavLink className="nav-img" to="/Dashboard"> <img src={Logo} alt="logo" /> </NavLink>
@@ -76,7 +76,7 @@ const Dashboard = () => {
       </div>
       <div className="map">
         <WrappedMap
-          googleMapURL={'https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places&key=AIzaSyCXH_d-DbxpEVyfunY8g8f9pVhC6dEX8bA'}
+          googleMapURL={'https://maps.googleapis.com/maps/api/j?sv=3.exp&libraries=geometry,drawing,places&key=${process.env.REACT_APP_GOOGLE_KEY}'}
           loadingElement={<div style={{ height: `100%` }} />}
           containerElement={<div style={{ height: `400px` }} />}
           mapElement={<div style={{ height: `100%` }} />}
@@ -84,7 +84,7 @@ const Dashboard = () => {
       </div>
       <div className="dropdown">
         <select>
-          <option defaultValue="Laporan">Semua Laporan</option>
+          <option selected value="Laporan">Semua Laporan</option>
           <option value="valid">Valid</option>
           <option value="notvalid">Tidak Valid</option>
           <option value="onprocess">Sudah di Proses</option>

@@ -1,5 +1,4 @@
 import React, { useState, useRef } from "react";
-import dotenv from "dotenv";
 import useSwr from "swr";
 import "./Dashboard.css";
 import Logo from "../../../assets/img/logo/logo.png";
@@ -20,7 +19,7 @@ const Dashboard = () => {
   // const { data, error } = useSwr(url, { fetcher });
   // const crimes = data && !error ? data.slice(0, 2000) : [];
 
-  dotenv.config();
+
 
   const logOut = () => {
     setRedirect(true);

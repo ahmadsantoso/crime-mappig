@@ -11,6 +11,7 @@ import { createStore } from "redux";
 import { Provider } from "react-redux";
 import { store } from "../../../config/redux";
 
+dotenv.config();
 
 // import ProtectedRoute from "./Protected";
 // moongose.connect(process.env.DB_CONNECT, {useNewUrlParser: true}, () =>

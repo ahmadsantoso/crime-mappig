@@ -1,5 +1,4 @@
 import React from "react";
-import dotenv from "dotenv";
 import "./App.css";
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import Dashboard from "../Dashboard/Dashboard";
@@ -10,7 +9,6 @@ import Analisa from "../Analisa/Analisa";
 import { createStore } from "redux";
 import { Provider } from "react-redux";
 import { store } from "../../../config/redux";
-
 
 // import ProtectedRoute from "./Protected";
 // moongose.connect(process.env.DB_CONNECT, {useNewUrlParser: true}, () =>

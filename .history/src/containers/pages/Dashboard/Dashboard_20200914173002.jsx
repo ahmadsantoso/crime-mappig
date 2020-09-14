@@ -1,5 +1,4 @@
 import React, { useState, useRef } from "react";
-import dotenv from "dotenv";
 import useSwr from "swr";
 import "./Dashboard.css";
 import Logo from "../../../assets/img/logo/logo.png";
@@ -20,7 +19,7 @@ const Dashboard = () => {
   // const { data, error } = useSwr(url, { fetcher });
   // const crimes = data && !error ? data.slice(0, 2000) : [];
 
-  dotenv.config();
+
 
   const logOut = () => {
     setRedirect(true);
@@ -76,7 +75,7 @@ const Dashboard = () => {
       </div>
       <div className="map">
         <WrappedMap
-          googleMapURL={'https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places&key=AIzaSyCXH_d-DbxpEVyfunY8g8f9pVhC6dEX8bA'}
+          googleMapURL={'https://maps.googleapis.com/maps/api/j?sv=3.exp&libraries=geometry,drawing,places&key=${process.env.REACT_APP_GOOGLE_KEY}'}
           loadingElement={<div style={{ height: `100%` }} />}
           containerElement={<div style={{ height: `400px` }} />}
           mapElement={<div style={{ height: `100%` }} />}
@@ -84,7 +83,7 @@ const Dashboard = () => {
       </div>
       <div className="dropdown">
         <select>
-          <option defaultValue="Laporan">Semua Laporan</option>
+          <option selected value="Laporan">Semua Laporan</option>
           <option value="valid">Valid</option>
           <option value="notvalid">Tidak Valid</option>
           <option value="onprocess">Sudah di Proses</option>

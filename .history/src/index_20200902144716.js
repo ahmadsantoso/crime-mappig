@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './containers/pages/App/index';
 import * as serviceWorker from './serviceWorker';
-
+import firebase from './config/firebase/index';
 
 ReactDOM.render( 
   <React.StrictMode >
