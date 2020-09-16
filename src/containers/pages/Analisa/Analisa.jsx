@@ -1,7 +1,6 @@
 import React, { useState, useEffect, Fragment } from "react";
 import "./Analisa.css";
 import { format } from "date-fns";
-import { connect, useSelector, useDispatch } from "react-redux";
 import { useHistory, NavLink, Redirect } from "react-router-dom";
 import { PieChart, Pie, Sector, Cell } from "recharts";
 import Logo from "../../../assets/img/logo/logo.png";

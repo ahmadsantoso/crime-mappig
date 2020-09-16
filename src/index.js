@@ -1,15 +1,20 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
+import { createStore, StoreProvider } from "easy-peasy";
 import App from './containers/pages/App/index';
 import * as serviceWorker from './serviceWorker';
+import { storeModel } from "./easy-peasy/model";
 
+const store = createStore (storeModel);
 
 ReactDOM.render( 
+  <StoreProvider store={store}>
   <React.StrictMode >
   <
   App />  
-  </React.StrictMode>,
+  </React.StrictMode>
+  </StoreProvider>,
   document.getElementById('root')
 );
 
