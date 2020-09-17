@@ -6,7 +6,7 @@ import { useHistory } from "react-router-dom";
 import Cookie from "js-cookie";
 import { useStoreActions } from "easy-peasy";
 import Button from "../../../component/atoms/Button";
-import { FormErrorMessage, FormControl, useToast } from "@chakra-ui/core";
+import { FormErrorMessage, useToast } from "@chakra-ui/core";
 
 const Register = () => {
     const history = useHistory();
@@ -20,8 +20,8 @@ const Register = () => {
         setSubmit(true);
         const registerData = { email: data2.emailInput, password: data2.passwordInput };
         try {
-            const res = await axios.post("https://ancient-spire-87228.herokuapp.com/api/operator/register", registerData);
-            console.log(registerData);
+            const res = await axios.post("https://ancient-spire-87228.herokuapp.com/api/operator/login", registerData);
+            console.log(loginData);
             const data = await res;
             console.log(data);
             setSubmit(false);

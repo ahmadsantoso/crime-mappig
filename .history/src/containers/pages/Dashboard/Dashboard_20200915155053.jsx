@@ -3,8 +3,6 @@ import dotenv from "dotenv";
 import useSwr from "swr";
 import "./Dashboard.css";
 import Logo from "../../../assets/img/logo/logo.png";
-import Cookie from "js-cookie";
-import { useStoreActions, useStoreState } from "easy-peasy";
 import { useHistory, NavLink, Redirect } from "react-router-dom";
 import { GoogleMap, Marker, withScriptjs, withGoogleMap, InfoWindow } from "react-google-maps";
 
@@ -12,10 +10,8 @@ const Dashboard = () => {
   const [isRedirect, setRedirect] = useState(false);
   const history = useHistory();
   const [selectedCrime, setSelectedCrime] = useState(null);
-
-  const isAuth = useStoreActions((actions) => actions.operator.setCurrentOperator);
-
   // const fetcher = (...args) => fetch(...args).then(response => response.json());
+
   // const mapRef = useRef();
   // const [bounds, setBounds] = useState(null);
   // const url =
@@ -27,9 +23,7 @@ const Dashboard = () => {
 
   const logOut = () => {
     setRedirect(true);
-    const user = null;
-    isAuth(user);
-    Cookie.remove("token");
+    localStorage.clear();
   };
 
   if (isRedirect) {

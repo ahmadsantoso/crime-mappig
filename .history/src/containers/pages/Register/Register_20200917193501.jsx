@@ -20,7 +20,7 @@ const Register = () => {
         setSubmit(true);
         const registerData = { email: data2.emailInput, password: data2.passwordInput };
         try {
-            const res = await axios.post("https://ancient-spire-87228.herokuapp.com/api/operator/register", registerData);
+            const res = await axios.post("https://ancient-spire-87228.herokuapp.com/api/operator/login", registerData);
             console.log(registerData);
             const data = await res;
             console.log(data);

@@ -19,11 +19,14 @@ const Login = () => {
   const isLogin = async (data2, e) => {
     setSubmit(true);
     const loginData = { email: data2.emailInput, password: data2.passwordInput };
-    try {
-      const res = await axios.post("https://ancient-spire-87228.herokuapp.com/api/operator/login", loginData);
-      console.log(loginData);
-      const data = await res;
-      console.log(data);
+    const res = await axios.post("https://ancient-spire-87228.herokuapp.com/api/operator/login", loginData);
+    console.log(loginData);
+
+    const data = await res;
+
+    console.log(data);
+
+    if (data.data) {
       setSubmit(false);
       isAuth(true);
       Cookie.set("token", data.data.accessToken);
@@ -37,10 +40,10 @@ const Login = () => {
       e.target.reset();
       history.push("/Dashboard");
     }
-    catch {
+    else {
       setSubmit(false);
       toast({
-        title: "Sign In Failed",
+        title: "Sign In Fail",
         status: "error",
         position: "top",
         duration: 3000,
@@ -54,40 +57,39 @@ const Login = () => {
       <div className="auth-card">
         <p className="auth-title">Welcome</p>
         <form onSubmit={handleSubmit(isLogin)}>
-          <FormControl isInvalid={errors.emailInput}>
-            <input
-              className="input"
-              id="email"
-              placeholder="Email"
-              type="text"
-              name="emailInput"
-              ref={register({
-                required: true,
-                pattern: /^(([^<>()\]\\.,;:\s@"]+(\.[^<>()\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
-              })}
-            />
-            <FormErrorMessage>
-              {errors.emailInput?.type === "required" && "Email required"}
-              {errors.emailInput?.type === "pattern" &&
-                "Your input must be an email"}
-            </FormErrorMessage>
+        <FormControl isInvalid={errors.emailInput}>
+          <input
+            className="input"
+            id="email"
+            placeholder="Email"
+            type="text"
+            name="emailInput"
+            ref={register({
+              required: true,
+              pattern: /^(([^<>()\]\\.,;:\s@"]+(\.[^<>()\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
+            })}
+          />
+          <FormErrorMessage>
+            {errors.emailInput?.type === "required" && "Email required"}
+            {errors.emailInput?.type === "pattern" &&
+              "Your input must be an email"}
+          </FormErrorMessage>
           </FormControl>
-          <FormControl isInvalid={errors.passwordInput}>
-            <input
-              className="input"
-              id="password"
-              placeholder="Password"
-              type="password"
-              name="passwordInput"
-              ref={register({
-                required: true,
-              })}
-            />
-            <FormErrorMessage>
-              {errors.passwordInput?.type === "required" &&
-                "Password Required"}
-            </FormErrorMessage>
-          </FormControl>
+          <input
+            className="input"
+            id="password"
+            placeholder="Password"
+            type="password"
+            name="passwordInput"
+            ref={register({
+              required: true,
+            })}
+          />
+          <FormErrorMessage>
+            {errors.passwordInput?.type === "required" &&
+              "Password Required"}
+          </FormErrorMessage>
+
           <div className="auth-button">
             <Button type="submit"
               title="Login"

@@ -1,25 +1,19 @@
-import React, {StrictMode} from 'react';
+import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import { createStore, StoreProvider } from "easy-peasy";
 import App from './containers/pages/App/index';
 import * as serviceWorker from './serviceWorker';
 import { storeModel } from "./easy-peasy/model";
-import { ColorModeProvider, ThemeProvider, CSSReset } from "@chakra-ui/core";
 
 const store = createStore (storeModel);
 
 ReactDOM.render( 
   <StoreProvider store={store}>
-    <ThemeProvider>
-        <ColorModeProvider>
-        <CSSReset />
-  <React.Fragment>
+  <React.StrictMode >
   <
   App />  
-  </React.Fragment>
-  </ColorModeProvider>
-      </ThemeProvider>
+  </React.StrictMode>
   </StoreProvider>,
   document.getElementById('root')
 );

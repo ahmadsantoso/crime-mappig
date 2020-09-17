@@ -13,11 +13,10 @@ ReactDOM.render(
   <StoreProvider store={store}>
     <ThemeProvider>
         <ColorModeProvider>
-        <CSSReset />
-  <React.Fragment>
+  <React.StrictMode >
   <
   App />  
-  </React.Fragment>
+  </React.StrictMode>
   </ColorModeProvider>
       </ThemeProvider>
   </StoreProvider>,

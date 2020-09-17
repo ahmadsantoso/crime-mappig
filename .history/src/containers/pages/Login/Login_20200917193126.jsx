@@ -40,7 +40,7 @@ const Login = () => {
     catch {
       setSubmit(false);
       toast({
-        title: "Sign In Failed",
+        title: "Sign In Fail",
         status: "error",
         position: "top",
         duration: 3000,
