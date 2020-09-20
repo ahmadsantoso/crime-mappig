@@ -103,23 +103,28 @@ export default function PengaduanDetail() {
                 <Text>Status Terakhir: {data.status_terakhir}</Text>
                 <Text>Jenis Kejahatan: {data.jenis_kejahatan.jenis}</Text>
                 <Text>Nama Pelapor: {data.masyarakat.nama}</Text>
-                <Text>Polisi: {data.polisi.nama}</Text>
+                <Text>
+                  Petugas:{" "}
+                  {!data.polisi ? "Belum ada petugas" : data.polisi.nama}
+                </Text>
               </Stack>
             </Box>
 
-            <Box w="100%" overflow="hidden" p="5">
-              <Heading as="p">Hasil SPK</Heading>
-              <Stack spacing={2}>
-                <Text>Jumlah Petugas: {data.spk.jumlah_petugas}</Text>
-                <Text>
-                  Radius Patroli: {Math.floor(data.spk.radius_patroli)} meter
-                </Text>
-                <Text>
-                  Intensitas (Dalam Radius 1000 meter): {data.spk.intensitas}{" "}
-                  Kasus
-                </Text>
-              </Stack>
-            </Box>
+            {data.spk && (
+              <Box w="100%" overflow="hidden" p="5">
+                <Heading as="p">Hasil SPK</Heading>
+                <Stack spacing={2}>
+                  <Text>Jumlah Petugas: {data.spk.jumlah_petugas}</Text>
+                  <Text>
+                    Radius Patroli: {Math.floor(data.spk.radius_patroli)} meter
+                  </Text>
+                  <Text>
+                    Intensitas (Dalam Radius 1000 meter): {data.spk.intensitas}{" "}
+                    Kasus
+                  </Text>
+                </Stack>
+              </Box>
+            )}
           </Grid>
         </Box>
       </Box>

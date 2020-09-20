@@ -7,6 +7,7 @@ import Register from "../Register/Register";
 import Laporan from "../Laporan/Laporan";
 import Analisa from "../Analisa/Analisa";
 import PengaduanDetail from "../PengaduanDetail/PengaduanDetail";
+import RincianLaporan from "../RincianLaporan/RincianLaporan";
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
         <Route path="/Login" component={Login} />
         <Route path="/Register" component={Register} />
         <Route path="/pengaduan/detail/:id" component={PengaduanDetail} />
+        <Route path="/rincian/laporan/:id" component={RincianLaporan} />
       </div>
     </Router>
   );

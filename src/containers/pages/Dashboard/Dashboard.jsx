@@ -3,7 +3,7 @@ import { MapMarker } from "../../../component/atoms/MapMarker/MapMarker";
 import axios from "axios";
 import dotenv from "dotenv";
 import useSwr from "swr";
-import { FormControl, FormLabel,} from "@chakra-ui/core";
+import { FormControl, FormLabel } from "@chakra-ui/core";
 import "./Dashboard.css";
 import Logo from "../../../assets/img/logo/logo.png";
 import Cookie from "js-cookie";
@@ -16,7 +16,9 @@ const Dashboard = () => {
   const history = useHistory();
   const [selectedPengaduan, setSelectedPengaduan] = useState(null);
 
-  const isAuth = useStoreActions((actions) => actions.operator.setCurrentOperator);
+  const isAuth = useStoreActions(
+    (actions) => actions.operator.setCurrentOperator
+  );
 
   const FETCH_STATUS = {
     LOADING: "LOADING",
@@ -31,11 +33,14 @@ const Dashboard = () => {
     const fetch = useCallback(async () => {
       setStatus(FETCH_STATUS.LOADING);
       axios
-        .get("https://ancient-spire-87228.herokuapp.com/api/operator/pengaduan", {
-          headers: {
-            Authorization: process.env.REACT_APP_TOKEN_SECRET,
-          },
-        })
+        .get(
+          "https://ancient-spire-87228.herokuapp.com/api/operator/pengaduan",
+          {
+            headers: {
+              Authorization: `Bearer ${Cookie.get("token")}`,
+            },
+          }
+        )
         .then((res) => {
           setData(res.data);
           setStatus("LOADED");
@@ -85,34 +90,33 @@ const Dashboard = () => {
 
   return (
     <div className="container">
-      <NavLink className="nav-img" to="/Dashboard"> <img src={Logo} alt="logo" /> </NavLink>
+      <NavLink className="nav-img" to="/Dashboard">
+        {" "}
+        <img src={Logo} alt="logo" />{" "}
+      </NavLink>
       <div className="nav">
-        <button
-          className="nav-btn"
-          onClick={() => history.push("/Laporan")}
-        >Laporan</button>
-        <button
-          className="nav-btn"
-          onClick={() => history.push("/Analisa")}
-        >Analisa</button>
-        <button
-          className="nav-btn"
-          onClick={logOut}
-        >logout
+        <button className="nav-btn" onClick={() => history.push("/Laporan")}>
+          Laporan
+        </button>
+        <button className="nav-btn" onClick={() => history.push("/Analisa")}>
+          Analisa
+        </button>
+        <button className="nav-btn" onClick={logOut}>
+          logout
         </button>
       </div>
       <div style={{ height: "60vh", width: "100%", paddingTop: "20px" }}>
         <GoogleMapReact
           yesIWantToUseGoogleMapApiInternals={true}
-        bootstrapURLKeys={{
-          key: process.env.REACT_APP_GOOGLE_KEY,
-          libraries: ["visualization"],
-        }}
-        defaultCenter={{
-          lat: -6.21159,
-          lng: 106.846711,
-        }}
-        defaultZoom={11}
+          bootstrapURLKeys={{
+            key: process.env.REACT_APP_GOOGLE_KEY,
+            libraries: ["visualization"],
+          }}
+          defaultCenter={{
+            lat: -6.21159,
+            lng: 106.846711,
+          }}
+          defaultZoom={11}
         >
           {data.map((p) => (
             <MapMarker
@@ -126,14 +130,14 @@ const Dashboard = () => {
       </div>
       <div className="dropdown">
         <FormControl>
-        <FormLabel>Tampilkan Laporan: </FormLabel>
-        <select>
-          <option defaultValue="Laporan">Semua Laporan</option>
-          <option value="valid">Valid</option>
-          <option value="notvalid">Tidak Valid</option>
-          <option value="onprocess">Sudah di Proses</option>
-          <option value="notprocess">Belum di Proses</option>
-        </select>
+          <FormLabel>Tampilkan Laporan: </FormLabel>
+          <select>
+            <option defaultValue="Laporan">Semua Laporan</option>
+            <option value="valid">Valid</option>
+            <option value="notvalid">Tidak Valid</option>
+            <option value="onprocess">Sudah di Proses</option>
+            <option value="notprocess">Belum di Proses</option>
+          </select>
         </FormControl>
       </div>
       <div className="tab-legend">
@@ -144,7 +148,7 @@ const Dashboard = () => {
           <li className="notprocess">Belum di Proses</li>
         </ul>
       </div>
-    </div >
+    </div>
   );
 };
 

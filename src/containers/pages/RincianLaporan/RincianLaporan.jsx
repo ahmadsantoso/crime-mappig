@@ -1,20 +1,20 @@
 import React from "react";
-import { Box, Heading, Button, CircularProgress } from "@chakra-ui/core";
-
+import { useParams } from "react-router-dom";
+import {
+  Heading,
+  Button,
+  Box,
+  CircularProgress,
+  Stack,
+  Text,
+} from "@chakra-ui/core";
 import { Navbar } from "../../../component/Navbar/Navbar";
-import { Filter } from "./Filter/Filter";
-import { ListLaporan } from "./ListLaporan/ListLaporan";
-import { useListPengaduan, FETCH_STATUS } from "./useListPengaduan";
+import { useRincianLaporan, FETCH_STATUS } from "./useRincianLaporan";
+import { format } from "date-fns";
 
-function Laporan() {
-  const {
-    data,
-    filter,
-    setFilter,
-    status,
-    fetch,
-    refresh,
-  } = useListPengaduan();
+export default function RincianLaporan() {
+  const { id } = useParams();
+  const { data, status, fetch } = useRincianLaporan(id);
 
   if (status === FETCH_STATUS.ERROR) {
     return (
@@ -61,6 +61,7 @@ function Laporan() {
       <Navbar />
       <Box
         d="flex"
+        px={10}
         w="100%"
         justifyContent="center"
         alignSelf="center"
@@ -68,17 +69,31 @@ function Laporan() {
         pb="3"
       >
         <Box
-          w={["95%", "75%", "70%", "60%"]}
-          justifyContent="center"
-          mt="5"
-          alignSelf="center"
+          marginY={4}
+          borderWidth="1px"
+          p="10px"
+          rounded="lg"
+          overflow="hidden"
+          minH={"60vh"}
         >
-          <Filter filter={filter} setFilter={setFilter} />
-          <ListLaporan listLaporan={data} refresh={refresh} />
+          <Text>
+            {format(new Date(data.tanggal_dibuat), "HH:mm dd/MM/yyyy")}
+          </Text>
+          <Heading>{data.jenis_kejahatan.jenis}</Heading>
+          <Stack spacing={1}>
+            <Text>Pelapor: {data.masyarakat.nama}</Text>
+            <Text>
+              Kordinat: Latitude {data.location.coordinates[1]} | Longitude{" "}
+              {data.location.coordinates[0]}
+            </Text>
+            <Text>Keterangan: {data.keterangan}</Text>
+            <Text>
+              Petugas: {!data.polisi ? "Belum ada petugas" : data.polisi.nama}
+            </Text>
+            <Text>Status: {data.status_terakhir}</Text>
+          </Stack>
         </Box>
       </Box>
     </>
   );
 }
-
-export default Laporan;
