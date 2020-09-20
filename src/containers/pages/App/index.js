@@ -8,10 +8,12 @@ import Laporan from "../Laporan/Laporan";
 import Analisa from "../Analisa/Analisa";
 import PengaduanDetail from "../PengaduanDetail/PengaduanDetail";
 import RincianLaporan from "../RincianLaporan/RincianLaporan";
+import { Navbar } from "component/Navbar/Navbar";
 
 function App() {
   return (
     <Router>
+      <Navbar />
       <div>
         <Route path="/Dashboard" exact component={Dashboard} />
         <Route path="/Laporan" component={Laporan} />

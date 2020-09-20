@@ -1,7 +1,6 @@
 import React from "react";
 import { Box, Heading, Button, CircularProgress } from "@chakra-ui/core";
 
-import { Navbar } from "../../../component/Navbar/Navbar";
 import { Filter } from "./Filter/Filter";
 import { ListLaporan } from "./ListLaporan/ListLaporan";
 import { useListPengaduan, FETCH_STATUS } from "./useListPengaduan";
@@ -43,22 +42,24 @@ function Laporan() {
 
   if (status === FETCH_STATUS.LOADING) {
     return (
-      <Box
-        d="flex"
-        w="100%"
-        justifyContent="center"
-        alignSelf="center"
-        flexDirection="column"
-        pb="3"
-      >
-        <CircularProgress isIndeterminate color="teal" />
-      </Box>
+      <>
+        <Box
+          // d="flex"
+          // w="100%"
+          // alignSelf="center"
+          // flexDirection="column"
+          // pb="3"
+          // height="100vh"
+          textAlign="center"
+        >
+          <CircularProgress marginTop="15rem" isIndeterminate color="teal" />
+        </Box>
+      </>
     );
   }
 
   return (
     <>
-      <Navbar />
       <Box
         d="flex"
         w="100%"

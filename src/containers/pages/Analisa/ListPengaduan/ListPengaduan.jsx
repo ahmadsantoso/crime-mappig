@@ -44,31 +44,39 @@ export function ListPengaduan() {
   if (status === FETCH_STATUS.LOADING) {
     return (
       <Box
-        d="flex"
-        w="100%"
-        justifyContent="center"
-        alignSelf="center"
-        flexDirection="column"
-        pb="3"
+        // d="flex"
+        // w="100%"
+        // alignSelf="center"
+        // flexDirection="column"
+        // pb="3"
+        // height="100vh"
+        textAlign="center"
       >
-        <CircularProgress isIndeterminate color="teal" />
+        <CircularProgress marginTop="15rem" isIndeterminate color="teal" />
       </Box>
     );
   }
 
   return (
-    <div>
+    <Box>
       {data.map((pengaduan) => (
-        <div
+        <Box
           key={pengaduan._id}
           className="list-pengaduan"
+          // marginY={4}
+          margin="1rem auto"
+          borderWidth="1px"
+          p="10px"
+          width="50%"
+          rounded="lg"
+          overflow="hidden"
           onClick={() => handleOnClick(pengaduan._id)}
         >
-          <p>Keterangan: {pengaduan.keterangan}</p>
-          <p>Status Terakhir: {pengaduan.status_terakhir}</p>
-          <p>Jenis Kejahatan: {pengaduan.jenis_kejahatan.jenis}</p>
-        </div>
+          <div>Keterangan: {pengaduan.keterangan}</div>
+          <div>Status Terakhir: {pengaduan.status_terakhir}</div>
+          <div>Jenis Kejahatan: {pengaduan.jenis_kejahatan.jenis}</div>
+        </Box>
       ))}
-    </div>
+    </Box>
   );
 }

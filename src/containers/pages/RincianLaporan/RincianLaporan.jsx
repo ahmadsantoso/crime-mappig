@@ -8,7 +8,6 @@ import {
   Stack,
   Text,
 } from "@chakra-ui/core";
-import { Navbar } from "../../../component/Navbar/Navbar";
 import { useRincianLaporan, FETCH_STATUS } from "./useRincianLaporan";
 import { format } from "date-fns";
 
@@ -44,21 +43,21 @@ export default function RincianLaporan() {
   if (status === FETCH_STATUS.LOADING) {
     return (
       <Box
-        d="flex"
-        w="100%"
-        justifyContent="center"
-        alignSelf="center"
-        flexDirection="column"
-        pb="3"
+        // d="flex"
+        // w="100%"
+        // alignSelf="center"
+        // flexDirection="column"
+        // pb="3"
+        // height="100vh"
+        textAlign="center"
       >
-        <CircularProgress isIndeterminate color="teal" />
+        <CircularProgress marginTop="15rem" isIndeterminate color="teal" />
       </Box>
     );
   }
 
   return (
     <>
-      <Navbar />
       <Box
         d="flex"
         px={10}

@@ -10,7 +10,6 @@ import {
   Grid,
 } from "@chakra-ui/core";
 
-import { Navbar } from "../../../component/Navbar/Navbar";
 import { usePengaduanDetail, FETCH_STATUS } from "./usePengaduanDetail";
 import { Map } from "./Map/Map";
 import { format } from "date-fns";
@@ -61,7 +60,6 @@ export default function PengaduanDetail() {
 
   return (
     <>
-      <Navbar />
       <Box
         d="flex"
         w="100%"

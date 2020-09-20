@@ -90,11 +90,11 @@ const Dashboard = () => {
 
   return (
     <div className="container">
-      <NavLink className="nav-img" to="/Dashboard">
+      {/* <NavLink className="nav-img" to="/Dashboard">
         {" "}
         <img src={Logo} alt="logo" />{" "}
-      </NavLink>
-      <div className="nav">
+      </NavLink> */}
+      {/* <div className="nav">
         <button className="nav-btn" onClick={() => history.push("/Laporan")}>
           Laporan
         </button>
@@ -104,7 +104,7 @@ const Dashboard = () => {
         <button className="nav-btn" onClick={logOut}>
           logout
         </button>
-      </div>
+      </div> */}
       <div style={{ height: "60vh", width: "100%", paddingTop: "20px" }}>
         <GoogleMapReact
           yesIWantToUseGoogleMapApiInternals={true}
