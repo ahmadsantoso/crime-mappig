@@ -101,7 +101,7 @@ const Dashboard = () => {
         >logout
         </button>
       </div>
-      <div style={{ height: "60vh", width: "100%", paddingTop: "20px" }}>
+      <div style={{ height: "50vh", width: "100%", paddingTop: "20px" }}>
         <GoogleMapReact
           yesIWantToUseGoogleMapApiInternals={true}
         bootstrapURLKeys={{
@@ -115,7 +115,7 @@ const Dashboard = () => {
         defaultZoom={11}
         >
           {data.map((p) => (
-            <MapMarker
+            <MapMarkerPin
               key={p._id}
               lat={p.location.coordinates[1]}
               lng={p.location.coordinates[0]}

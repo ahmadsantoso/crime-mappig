@@ -101,9 +101,25 @@ const Dashboard = () => {
         >logout
         </button>
       </div>
-      <div style={{ height: "60vh", width: "100%", paddingTop: "20px" }}>
+      <div style={{ height: "50vh", width: "100%", paddingTop: "20px" }}>
         <GoogleMapReact
           yesIWantToUseGoogleMapApiInternals={true}
+          onGoogleApiLoaded={({ map, maps }) =>
+          // eslint-disable-next-line no-undef
+          new google.maps.Circle({
+            strokeColor: "#FF0000",
+            strokeOpacity: 0.8,
+            strokeWeight: 2,
+            fillColor: "#FF0000",
+            fillOpacity: 0.3,
+            map,
+            center: {
+              lat: data[0].location.coordinates[1],
+              lng: data[0].location.coordinates[0],
+            },
+            radius: 1300,
+          })
+        }
         bootstrapURLKeys={{
           key: process.env.REACT_APP_GOOGLE_KEY,
           libraries: ["visualization"],

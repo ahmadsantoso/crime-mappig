@@ -24,6 +24,9 @@ const Dashboard = () => {
     ERROR: "ERROR",
   };
 
+  const TOKEN =
+    "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmNTc4ZTUyMGJlMTUzMDliNzA3ZDM4NSIsImVtYWlsIjoicm9ubnlAZW1haWwuY29tIiwicm9sZSI6Ik9QRVJBVE9SIiwiaWF0IjoxNTk5NTczOTM2LCJleHAiOjE2MDIxNjU5MzZ9.fRjydc68niDOy6r7BTnxjyivSpQlpWGCvbkKl5nH2X8";
+
   const useListPengaduan = () => {
     const [data, setData] = useState([]);
     const [status, setStatus] = useState(null);
@@ -33,7 +36,7 @@ const Dashboard = () => {
       axios
         .get("https://ancient-spire-87228.herokuapp.com/api/operator/pengaduan", {
           headers: {
-            Authorization: process.env.REACT_APP_TOKEN_SECRET,
+            Authorization: TOKEN,
           },
         })
         .then((res) => {
@@ -101,7 +104,7 @@ const Dashboard = () => {
         >logout
         </button>
       </div>
-      <div style={{ height: "60vh", width: "100%", paddingTop: "20px" }}>
+      <div style={{ height: "50vh", width: "100%", paddingTop: "20px" }}>
         <GoogleMapReact
           yesIWantToUseGoogleMapApiInternals={true}
         bootstrapURLKeys={{
@@ -119,7 +122,7 @@ const Dashboard = () => {
               key={p._id}
               lat={p.location.coordinates[1]}
               lng={p.location.coordinates[0]}
-              id={p.keterangan}
+              // id={p.keterangan}
             />
           ))}
         </GoogleMapReact>

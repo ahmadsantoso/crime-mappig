@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useCallback } from "react";
-import { MapMarker } from "../../../component/atoms/MapMarker/MapMarker";
+// import { MapMarker } from "../../../component/atoms/MapMarker/MapMarker";
 import axios from "axios";
 import dotenv from "dotenv";
 import useSwr from "swr";
@@ -115,7 +115,7 @@ const Dashboard = () => {
         defaultZoom={11}
         >
           {data.map((p) => (
-            <MapMarker
+            <Marker
               key={p._id}
               lat={p.location.coordinates[1]}
               lng={p.location.coordinates[0]}

@@ -3,7 +3,6 @@ import { MapMarker } from "../../../component/atoms/MapMarker/MapMarker";
 import axios from "axios";
 import dotenv from "dotenv";
 import useSwr from "swr";
-import { FormControl, FormLabel,} from "@chakra-ui/core";
 import "./Dashboard.css";
 import Logo from "../../../assets/img/logo/logo.png";
 import Cookie from "js-cookie";
@@ -14,7 +13,7 @@ import GoogleMapReact from "google-map-react";
 const Dashboard = () => {
   const [isRedirect, setRedirect] = useState(false);
   const history = useHistory();
-  const [selectedPengaduan, setSelectedPengaduan] = useState(null);
+  // const [selectedPengaduan, setSelectedPengaduan] = useState(null);
 
   const isAuth = useStoreActions((actions) => actions.operator.setCurrentOperator);
 
@@ -24,24 +23,30 @@ const Dashboard = () => {
     ERROR: "ERROR",
   };
 
+  const TOKEN =
+    "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmNTc4ZTUyMGJlMTUzMDliNzA3ZDM4NSIsImVtYWlsIjoicm9ubnlAZW1haWwuY29tIiwicm9sZSI6Ik9QRVJBVE9SIiwiaWF0IjoxNTk5NTczOTM2LCJleHAiOjE2MDIxNjU5MzZ9.fRjydc68niDOy6r7BTnxjyivSpQlpWGCvbkKl5nH2X8";
+
   const useListPengaduan = () => {
     const [data, setData] = useState([]);
-    const [status, setStatus] = useState(null);
+    const [status, setStatus] = useState(FETCH_STATUS.LOADING);
+
+    
+
 
     const fetch = useCallback(async () => {
       setStatus(FETCH_STATUS.LOADING);
       axios
         .get("https://ancient-spire-87228.herokuapp.com/api/operator/pengaduan", {
           headers: {
-            Authorization: process.env.REACT_APP_TOKEN_SECRET,
+            Authorization: TOKEN,
           },
         })
         .then((res) => {
           setData(res.data);
-          setStatus("LOADED");
+          setStatus(FETCH_STATUS.LOADED);
         })
         .catch(() => {
-          setStatus("ERROR");
+          setStatus(FETCH_STATUS.ERROR);
         });
     }, []);
 
@@ -54,21 +59,22 @@ const Dashboard = () => {
       status,
       fetch,
     };
+
   };
 
   const { data, status } = useListPengaduan();
 
   if (status === FETCH_STATUS.ERROR) {
-    return <p>Error....</p>;
-  }
+      return <p>Error....</p>;
+    }
 
-  if (status === FETCH_STATUS.LOADING) {
-    return <p>Loading...</p>;
-  }
+    if (status === FETCH_STATUS.LOADING) {
+      return <p>Loading...</p>;
+    }
 
-  if (status !== FETCH_STATUS.LOADED) {
-    return <p>s</p>;
-  }
+    if (status !== FETCH_STATUS.LOADED) {
+      return <p>s</p>;
+    }
 
   dotenv.config();
 
@@ -101,7 +107,7 @@ const Dashboard = () => {
         >logout
         </button>
       </div>
-      <div style={{ height: "60vh", width: "100%", paddingTop: "20px" }}>
+      <div style={{ height: "20%", width: "100%", paddingTop: "20px" }}>
         <GoogleMapReact
           yesIWantToUseGoogleMapApiInternals={true}
         bootstrapURLKeys={{
@@ -114,19 +120,17 @@ const Dashboard = () => {
         }}
         defaultZoom={11}
         >
-          {data.map((p) => (
+          {/* {data.map((p) => (
             <MapMarker
               key={p._id}
               lat={p.location.coordinates[1]}
               lng={p.location.coordinates[0]}
               id={p.keterangan}
             />
-          ))}
+          ))} */}
         </GoogleMapReact>
       </div>
       <div className="dropdown">
-        <FormControl>
-        <FormLabel>Tampilkan Laporan: </FormLabel>
         <select>
           <option defaultValue="Laporan">Semua Laporan</option>
           <option value="valid">Valid</option>
@@ -134,7 +138,6 @@ const Dashboard = () => {
           <option value="onprocess">Sudah di Proses</option>
           <option value="notprocess">Belum di Proses</option>
         </select>
-        </FormControl>
       </div>
       <div className="tab-legend">
         <ul>

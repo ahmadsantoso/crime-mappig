@@ -27,6 +27,7 @@ const Dashboard = () => {
   const useListPengaduan = () => {
     const [data, setData] = useState([]);
     const [status, setStatus] = useState(null);
+    const Marker = ({children}) => children;
 
     const fetch = useCallback(async () => {
       setStatus(FETCH_STATUS.LOADING);
@@ -101,7 +102,7 @@ const Dashboard = () => {
         >logout
         </button>
       </div>
-      <div style={{ height: "60vh", width: "100%", paddingTop: "20px" }}>
+      <div style={{ height: "50vh", width: "100%", paddingTop: "20px" }}>
         <GoogleMapReact
           yesIWantToUseGoogleMapApiInternals={true}
         bootstrapURLKeys={{
@@ -115,7 +116,7 @@ const Dashboard = () => {
         defaultZoom={11}
         >
           {data.map((p) => (
-            <MapMarker
+            <Marker
               key={p._id}
               lat={p.location.coordinates[1]}
               lng={p.location.coordinates[0]}

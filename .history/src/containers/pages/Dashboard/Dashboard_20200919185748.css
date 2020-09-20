@@ -45,7 +45,7 @@ img {
 
 .dropdown {
   margin-top: 1rem !important;
-  right: 0;
+  border: black;
 }
 
 ul {

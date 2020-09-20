@@ -115,7 +115,7 @@ const Dashboard = () => {
         defaultZoom={11}
         >
           {data.map((p) => (
-            <MapMarker
+            <Marker
               key={p._id}
               lat={p.location.coordinates[1]}
               lng={p.location.coordinates[0]}

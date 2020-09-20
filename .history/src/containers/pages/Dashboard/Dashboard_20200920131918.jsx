@@ -104,6 +104,7 @@ const Dashboard = () => {
       <div style={{ height: "60vh", width: "100%", paddingTop: "20px" }}>
         <GoogleMapReact
           yesIWantToUseGoogleMapApiInternals={true}
+          onGoogleApiLoaded={({ map, maps })
         bootstrapURLKeys={{
           key: process.env.REACT_APP_GOOGLE_KEY,
           libraries: ["visualization"],

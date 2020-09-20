@@ -101,9 +101,13 @@ const Dashboard = () => {
         >logout
         </button>
       </div>
-      <div style={{ height: "60vh", width: "100%", paddingTop: "20px" }}>
+      <div style={{ height: "50vh", width: "100%", paddingTop: "20px" }}>
         <GoogleMapReact
           yesIWantToUseGoogleMapApiInternals={true}
+          onGoogleApiLoaded={({ map, maps }) =>
+          // eslint-disable-next-line no-undef
+          
+        }
         bootstrapURLKeys={{
           key: process.env.REACT_APP_GOOGLE_KEY,
           libraries: ["visualization"],
