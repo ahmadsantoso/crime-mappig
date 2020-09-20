@@ -1,0 +1,7 @@
+.list-pengaduan {
+    padding-bottom: 0.5rem;
+    margin-top: 1.5rem;
+    border-bottom: 0.1rem solid;
+    border-color: white;
+    cursor: pointer;
+}
