@@ -1,46 +1,85 @@
-import React, { useState, useEffect, Fragment } from "react";
-import { format } from "date-fns";
-import Logo from "../../../assets/img/logo/logo.png";
-import { useHistory, NavLink, Redirect } from "react-router-dom";
-import "./Laporan.css";
+import React from "react";
+import { Box, Heading, Button, CircularProgress } from "@chakra-ui/core";
 
-const Laporan = () => {
+import { Filter } from "./Filter/Filter";
+import { ListLaporan } from "./ListLaporan/ListLaporan";
+import { useListPengaduan, FETCH_STATUS } from "./useListPengaduan";
 
-const initialDate = format(new Date(), "dd-MM-yyyy");
+function Laporan() {
+  const {
+    data,
+    filter,
+    setFilter,
+    status,
+    fetch,
+    refresh,
+  } = useListPengaduan();
 
-  const [isRedirect, setRedirect] = useState(false);
-  const history = useHistory();
-
-  const logOut = () => {
-    setRedirect(true);
-    localStorage.clear();
-  };
-
-  if (isRedirect) {
-    return <Redirect to="/login" />;
+  if (status === FETCH_STATUS.ERROR) {
+    return (
+      <Box
+        d="flex"
+        w="100%"
+        justifyContent="center"
+        alignSelf="center"
+        flexDirection="column"
+        pb="3"
+      >
+        <Box
+          w={["95%", "75%", "70%", "60%"]}
+          justifyContent="center"
+          mt="5"
+          alignSelf="center"
+        >
+          <Heading as="h4">Terjadi kesalahan</Heading>
+          <Button variant="solid" variantColor="teal" onClick={fetch}>
+            Muat Ulang
+          </Button>
+        </Box>
+      </Box>
+    );
   }
 
+  if (status === FETCH_STATUS.LOADING) {
+    return (
+      <>
+        <Box
+          // d="flex"
+          // w="100%"
+          // alignSelf="center"
+          // flexDirection="column"
+          // pb="3"
+          // height="100vh"
+          textAlign="center"
+        >
+          <CircularProgress marginTop="15rem" isIndeterminate color="teal" />
+        </Box>
+      </>
+    );
+  }
 
   return (
-    <div className="container">
-      <NavLink className="nav-img" to="/Dashboard"> <img src={Logo} alt="logo" /> </NavLink>
-      <div className="nav">
-        <button
-          className="nav-btn"
-          onClick={() => history.push("/Laporan")}
-        >Laporan</button>
-        <button
-          className="nav-btn"
-          onClick={() => history.push("/Analisa")}
-        >Analisa</button>
-        <button
-          className="nav-btn"
-          onClick={logOut}
-        >logout
-        </button>
-      </div>
-    </div>
+    <>
+      <Box
+        d="flex"
+        w="100%"
+        justifyContent="center"
+        alignSelf="center"
+        flexDirection="column"
+        pb="3"
+      >
+        <Box
+          w={["95%", "75%", "70%", "60%"]}
+          justifyContent="center"
+          mt="5"
+          alignSelf="center"
+        >
+          <Filter filter={filter} setFilter={setFilter} />
+          <ListLaporan listLaporan={data} refresh={refresh} />
+        </Box>
+      </Box>
+    </>
   );
-};
+}
 
 export default Laporan;

@@ -71,9 +71,9 @@ li.notvalid::before {
 }
 
 li.onprocess::before {
-  color: #fbff00;
+  color: #c300ff;
 }
 
 li.notprocess::before {
-  color: #545254;
+  color: #ffb700;
 }

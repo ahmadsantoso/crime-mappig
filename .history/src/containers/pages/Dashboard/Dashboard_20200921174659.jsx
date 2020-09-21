@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useCallback } from "react";
 import { MapMarker } from "../../../component/atoms/MapMarker/MapMarker";
-import { Filter } from "../Laporan/Filter/Filter";
+import { Filter } from "./Filter/Filter";
 import { useListPengaduan, FETCH_STATUS } from "../Laporan/useListPengaduan";
 import dotenv from "dotenv";
 import { Box, Heading, Button, CircularProgress } from "@chakra-ui/core";
@@ -81,13 +81,13 @@ const Dashboard = () => {
               key={p._id}
               lat={p.location.coordinates[1]}
               lng={p.location.coordinates[0]}
-              // id={p.keterangan}
+              id={p.keterangan}
             />
           ))}
         </GoogleMapReact>
       </div>
       <div className="dropdown">
-      <Filter filter={filter} setFilter={setFilter} />
+      {/* <Filter filter={filter} setFilter={setFilter} /> */}
       </div>
       <div className="tab-legend">
         <ul>

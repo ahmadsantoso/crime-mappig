@@ -1,27 +1,26 @@
-import React, {StrictMode} from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
+import React from "react";
+import ReactDOM from "react-dom";
+import "./index.css";
 import { createStore, StoreProvider } from "easy-peasy";
-import App from './containers/pages/App/index';
-import * as serviceWorker from './serviceWorker';
+import App from "./containers/pages/App/index";
+import * as serviceWorker from "./serviceWorker";
 import { storeModel } from "./easy-peasy/model";
 import { ColorModeProvider, ThemeProvider, CSSReset } from "@chakra-ui/core";
 
-const store = createStore (storeModel);
+const store = createStore(storeModel);
 
-ReactDOM.render( 
+ReactDOM.render(
   <StoreProvider store={store}>
     <ThemeProvider>
-        <ColorModeProvider>
+      <ColorModeProvider>
         <CSSReset />
-  <React.Fragment>
-  <
-  App />  
-  </React.Fragment>
-  </ColorModeProvider>
-      </ThemeProvider>
+        <React.Fragment>
+          <App />
+        </React.Fragment>
+      </ColorModeProvider>
+    </ThemeProvider>
   </StoreProvider>,
-  document.getElementById('root')
+  document.getElementById("root")
 );
 
 // If you want your app to work offline and load faster, you can change

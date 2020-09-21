@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useCallback } from "react";
 import { MapMarker } from "../../../component/atoms/MapMarker/MapMarker";
-import { Filter } from "../Laporan/Filter/Filter";
+import { Filter } from "../Filter/Filter";
 import { useListPengaduan, FETCH_STATUS } from "../Laporan/useListPengaduan";
 import dotenv from "dotenv";
 import { Box, Heading, Button, CircularProgress } from "@chakra-ui/core";

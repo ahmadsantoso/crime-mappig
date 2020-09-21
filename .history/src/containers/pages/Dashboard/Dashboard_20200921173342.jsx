@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useCallback } from "react";
 import { MapMarker } from "../../../component/atoms/MapMarker/MapMarker";
-import { Filter } from "../Laporan/Filter/Filter";
+import { Filter } from "./Filter/Filter.jsx";
 import { useListPengaduan, FETCH_STATUS } from "../Laporan/useListPengaduan";
 import dotenv from "dotenv";
 import { Box, Heading, Button, CircularProgress } from "@chakra-ui/core";
@@ -8,7 +8,6 @@ import "./Dashboard.css";
 import GoogleMapReact from "google-map-react";
 
 const Dashboard = () => {
-  dotenv.config();
   const {
     data,
     filter,
@@ -17,6 +16,7 @@ const Dashboard = () => {
     fetch,
     refresh,
   } = useListPengaduan();
+    dotenv.config();
 
     if (status === FETCH_STATUS.ERROR) {
       return (
@@ -81,7 +81,7 @@ const Dashboard = () => {
               key={p._id}
               lat={p.location.coordinates[1]}
               lng={p.location.coordinates[0]}
-              // id={p.keterangan}
+              id={p.keterangan}
             />
           ))}
         </GoogleMapReact>
