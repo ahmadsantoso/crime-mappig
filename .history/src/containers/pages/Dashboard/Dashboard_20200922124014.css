@@ -45,9 +45,8 @@ img {
 
 .tab-legend{
   float: right;
-  position: relative;
+  positon: absolute;
 }
-
 ul {
   padding: 0;
   

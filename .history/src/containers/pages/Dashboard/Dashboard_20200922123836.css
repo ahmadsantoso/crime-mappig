@@ -43,11 +43,15 @@ img {
   height: 20%;
 }
 
-.tab-legend{
-  float: right;
-  position: relative;
+.dropdown {
+  margin-top: 1rem !important;
+  right: 0;
 }
 
+.tab-legend{
+  float: right;
+  text-align: justify ;
+}
 ul {
   padding: 0;
   

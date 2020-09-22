@@ -43,14 +43,17 @@ img {
   height: 20%;
 }
 
+.dropdown {
+  margin-top: 1rem !important;
+  right: 0;
+}
+
 .tab-legend{
-  float: right;
-  position: relative;
+  align-items: flex-end;
 }
 
 ul {
   padding: 0;
-  
 }
 
 li {

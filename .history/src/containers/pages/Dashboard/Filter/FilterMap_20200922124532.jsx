@@ -13,7 +13,7 @@ import { PENGADUAN_STATUS } from "../../Laporan/useListPengaduan";
 export function FilterMap({ filter, setFilter }) {
   return (
     <Menu>
-      <MenuButton as={Button} rightIcon="chevron-down" marginTop="5">
+      <MenuButton as={Button} rightIcon="chevron-down" marginTop="20">
         Filter Titik by Status
       </MenuButton>
       <MenuList>

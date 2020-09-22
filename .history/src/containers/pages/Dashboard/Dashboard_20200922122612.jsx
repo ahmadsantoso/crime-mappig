@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useCallback } from "react";
 import { MapMarker } from "../../../component/atoms/MapMarker/MapMarker";
-import { FilterMap } from "./Filter/FilterMap";
+import { FilterMap } from "../Filter/Filter";
 import { useListPengaduan, FETCH_STATUS } from "../Laporan/useListPengaduan";
 import dotenv from "dotenv";
 import { Box, Heading, Button, CircularProgress } from "@chakra-ui/core";
@@ -91,14 +91,14 @@ const Dashboard = () => {
       <div className="dropdown">
       <FilterMap filter={filter} setFilter={setFilter} />
       </div>
-      {/* <div className="tab-legend">
+      <div className="tab-legend">
         <ul>
           <li className="valid">Laporan Valid</li>
           <li className="notvalid">Laporan Tidak Valid</li>
           <li className="onprocess">Sudah di Proses</li>
           <li className="notprocess">Belum di Proses</li>
         </ul>
-      </div> */}
+      </div>
     </div>
   );
 };

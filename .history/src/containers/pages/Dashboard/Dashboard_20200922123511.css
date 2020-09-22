@@ -43,9 +43,12 @@ img {
   height: 20%;
 }
 
+.dropdown {
+  margin-top: 1rem !important;
+  right: 0;
+}
+
 .tab-legend{
-  float: right;
-  position: relative;
 }
 
 ul {
@@ -56,6 +59,8 @@ ul {
 li {
   font-size: 20px;
   list-style: none;
+    flex-direction: row-reverse;
+
 }
 
 li::before {
