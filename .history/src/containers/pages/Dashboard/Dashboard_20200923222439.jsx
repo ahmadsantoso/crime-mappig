@@ -89,10 +89,10 @@ const Dashboard = () => {
           ))}
         </GoogleMapReact>
       </div>
+      <br/>
       <div className="dropdown">
         <FilterMap filter={filter} setFilter={setFilter} />
       </div>
-      <br />
       {/* <div className="tab-legend">
         <ul>
           <li className="valid">Laporan Valid</li>

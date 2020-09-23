@@ -92,7 +92,7 @@ export default function RincianLaporan() {
               Petugas: {!data.polisi ? "Belum ada petugas" : data.polisi.nama}
             </Text>
             <Text>No. Telpon: {!data.polisi ? null : data.polisi.no_telp}</Text>
-            <Text>Keterangan: {!data.keterangan ? null : data.keterangan}</Text>
+            <Text>Keterangan: {data.keterangan}</Text>
             <Text>Jumalah Korban: {data.jumlah_korban}</Text>
             <Text>Status: {data.status_terakhir}</Text>
           </Stack>

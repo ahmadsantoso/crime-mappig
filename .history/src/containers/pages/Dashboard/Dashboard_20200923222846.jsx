@@ -93,14 +93,14 @@ const Dashboard = () => {
         <FilterMap filter={filter} setFilter={setFilter} />
       </div>
       <br />
-      {/* <div className="tab-legend">
+      <div className="tab-legend">
         <ul>
           <li className="valid">Laporan Valid</li>
           <li className="notvalid">Laporan Tidak Valid</li>
           <li className="onprocess">Sudah di Proses</li>
           <li className="notprocess">Belum di Proses</li>
         </ul>
-      </div> */}
+      </div>
     </div>
   );
 };
