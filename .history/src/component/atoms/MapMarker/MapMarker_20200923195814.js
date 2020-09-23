@@ -17,7 +17,7 @@ export function MapMarker({ id, p }) {
             position: "top",
             description: (
               <Button
-                variantColor=""
+                variantColor="black"
                 onClick={() => history.push(`/rincian/laporan/${p._id}`)}
               >
                 Klik untuk info lebih detail

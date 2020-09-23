@@ -18,10 +18,10 @@
   
   .nav-btn {
     padding: 10px 40px;
-    border: 1px solid turquoise;
+    border: 1px solid cadetblue;
     border-radius: 25px;
     margin: 15px 10px;
-    background: #7ACFF5;
+    background: turquoise;
     color: white;
     font-size: 14px;
     text-transform: uppercase;
@@ -31,7 +31,7 @@
   
   .nav-btn:hover {
     background: white;
-    color: #7ACFF5;
+    color: turquoise;
     border: 1px solid turquoise;
     cursor: pointer;
 }

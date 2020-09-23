@@ -10,14 +10,14 @@ export function MapMarker({ id, p }) {
     <>
       <div
         className="pin bounce"
-        id={p.jenis_kejahatan.jenis}
+        // id={p.jenis_kejahatan.jenis}
         onClick={() =>
           toast({
             title: `${p.jenis_kejahatan.jenis}`,
             position: "top",
             description: (
               <Button
-                variantColor=""
+                variantColor="black"
                 onClick={() => history.push(`/rincian/laporan/${p._id}`)}
               >
                 Klik untuk info lebih detail

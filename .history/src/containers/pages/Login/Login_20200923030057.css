@@ -4,11 +4,11 @@
     align-items: center;
     width: 100%;
     height: 100vh;
-    background: #7ACFF5;
+    background: cadetblue;
 }
 
 .auth-card {
-    border: 1px solid #7ACFF5;
+    border: 1px solid cadetblue;
     padding: 20px;
     border-radius: 10px;
     box-shadow: 3px 3px 10px 0px rgba(0, 0, 0, 0.25);
@@ -19,7 +19,7 @@ p.auth-title {
     margin: 0px;
     font-weight: bold;
     font-size: 24px;
-    color: #7ACFF5;
+    color: cadetblue;
     margin-bottom: 16px;
 }
 
@@ -31,7 +31,7 @@ p.auth-title {
 input.input {
     padding: 16px;
     border-radius: 8px;
-    border: 1px solid #7ACFF5;
+    border: 1px solid cadetblue;
     outline: none;
     display: block;
     margin: 12px;
@@ -44,7 +44,7 @@ button.btn {
     border: 1px solid whitesmoke;
     border-radius: 8px;
     min-width: 200px;
-    background: #7ACFF5;
+    background: cadetblue;
     color: white;
     display: block;
     margin: 0 auto;
@@ -59,20 +59,6 @@ button.btn {
     cursor: pointer;
 }
 
-.btn-disable {
-    padding: 18px;
-    background: gray;
-    border: 1px solid gray;
-    border-radius: 8px;
-    min-width: 200px;
-    display: block;
-    margin: 0 auto;
-    font-size: 12px;
-    text-transform: uppercase;
-    font-weight: bold;
-    outline: none;
-}
-
-.btn-disable:hover {
-    cursor: not-allowed;
+.auth-button {
+    display: flex;
 }

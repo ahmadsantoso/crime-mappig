@@ -55,7 +55,7 @@ export default function RincianLaporan() {
       </Box>
     );
   }
-  
+  console.log(data);
   return (
     <>
       <Box
@@ -81,19 +81,14 @@ export default function RincianLaporan() {
           <Heading>{data.jenis_kejahatan.jenis}</Heading>
           <Stack spacing={1}>
             <Text>Pelapor: {data.masyarakat.nama}</Text>
-            <Text>No. Telpon: {data.masyarakat.no_telp}</Text>
-            <Text>Foto: {data.foto}</Text>
             <Text>
               Kordinat: Latitude {data.location.coordinates[1]} | Longitude{" "}
               {data.location.coordinates[0]}
             </Text>
-            <br /> 
+            <Text>Keterangan: {data.keterangan}</Text>
             <Text>
               Petugas: {!data.polisi ? "Belum ada petugas" : data.polisi.nama}
             </Text>
-            <Text>No. Telpon: {data.polisi.no_telp}</Text>
-            <Text>Keterangan: {data.keterangan}</Text>
-            <Text>Jumalah Korban: {data.jumlah_korban}</Text>
             <Text>Status: {data.status_terakhir}</Text>
           </Stack>
         </Box>

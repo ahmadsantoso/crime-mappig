@@ -83,7 +83,7 @@ const Dashboard = () => {
               key={p._id}
               lat={p.location.coordinates[1]}
               lng={p.location.coordinates[0]}
-              p={p}
+              // p={p}
             />
           ))}
         </GoogleMapReact>

@@ -55,7 +55,7 @@ export default function RincianLaporan() {
       </Box>
     );
   }
-  
+  console.log(data);
   return (
     <>
       <Box

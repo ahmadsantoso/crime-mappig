@@ -14,13 +14,21 @@ const Login = () => {
   const [submit, setSubmit] = useState(false);
   const { register, errors, handleSubmit } = useForm();
 
-  const isAuth = useStoreActions((actions) => actions.operator.setCurrentOperator);
+  const isAuth = useStoreActions(
+    (actions) => actions.operator.setCurrentOperator
+  );
 
   const isLogin = async (data2, e) => {
     setSubmit(true);
-    const loginData = { email: data2.emailInput, password: data2.passwordInput };
+    const loginData = {
+      email: data2.emailInput,
+      password: data2.passwordInput,
+    };
     try {
-      const res = await axios.post("https://ancient-spire-87228.herokuapp.com/api/operator/login", loginData);
+      const res = await axios.post(
+        "https://ancient-spire-87228.herokuapp.com/api/operator/login",
+        loginData
+      );
       console.log(loginData);
       const data = await res;
       console.log(data);
@@ -36,8 +44,7 @@ const Login = () => {
       });
       e.target.reset();
       history.push("/Dashboard");
-    }
-    catch {
+    } catch {
       setSubmit(false);
       toast({
         title: "Sign In Failed",
@@ -59,7 +66,7 @@ const Login = () => {
               className="input"
               id="email"
               placeholder="Email"
-              type="text"
+              type="email"
               name="emailInput"
               ref={register({
                 required: true,
@@ -84,14 +91,11 @@ const Login = () => {
               })}
             />
             <FormErrorMessage>
-              {errors.passwordInput?.type === "required" &&
-                "Password Required"}
+              {errors.passwordInput?.type === "required" && "Password Required"}
             </FormErrorMessage>
           </FormControl>
           <div className="auth-button">
-            <Button type="submit"
-              title="Login"
-            />
+            <Button type="submit" title="Login" />
           </div>
         </form>
       </div>

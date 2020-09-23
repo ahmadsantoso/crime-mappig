@@ -55,7 +55,7 @@ export default function RincianLaporan() {
       </Box>
     );
   }
-  
+  console.log(data);
   return (
     <>
       <Box
@@ -82,7 +82,6 @@ export default function RincianLaporan() {
           <Stack spacing={1}>
             <Text>Pelapor: {data.masyarakat.nama}</Text>
             <Text>No. Telpon: {data.masyarakat.no_telp}</Text>
-            <Text>Foto: {data.foto}</Text>
             <Text>
               Kordinat: Latitude {data.location.coordinates[1]} | Longitude{" "}
               {data.location.coordinates[0]}
