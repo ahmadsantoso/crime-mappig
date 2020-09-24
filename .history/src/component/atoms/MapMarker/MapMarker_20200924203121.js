@@ -10,6 +10,7 @@ export function MapMarker({ p }) {
     <>
       <div
         className="pin bounce"
+        // id={p.jenis_kejahatan.jenis}
         onClick={() =>
           toast({
             title: `${p.jenis_kejahatan.jenis}`,

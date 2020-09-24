@@ -2,7 +2,7 @@ import React from "react";
 import { useHistory } from "react-router-dom";
 import { useToast, Button } from "@chakra-ui/core";
 
-export function MapMarker({ p }) {
+export function MapMarker({ x }) {
   const toast = useToast();
   const history = useHistory();
 
@@ -12,12 +12,12 @@ export function MapMarker({ p }) {
         className="pin bounce"
         onClick={() =>
           toast({
-            title: `${p.jenis_kejahatan.jenis}`,
+            title: `${x.jenis_kejahatan.jenis}`,
             position: "top",
             description: (
               <Button
                 variantColor=""
-                onClick={() => history.push(`/rincian/laporan/${p._id}`)}
+                onClick={() => history.push(`/rincian/laporan/${x._id}`)}
               >
                 Klik untuk info lebih detail
               </Button>

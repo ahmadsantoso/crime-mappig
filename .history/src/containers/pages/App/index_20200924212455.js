@@ -1,6 +1,6 @@
 import React, { lazy, Suspense } from "react";
 import "./App.css";
-import { BrowserRouter as Router, Route } from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Dashboard from "../Dashboard/Dashboard";
 import Laporan from "../Laporan/Laporan";
 import Analisa from "../Analisa/Analisa";
@@ -13,7 +13,7 @@ const Register = lazy(() => import("containers/pages/Register/Register"));
 
 function App() {
   return (
-    <Router>
+    <Switch>
       <Suspense fallback={"loading..."}>
         <Route exact path="/" component={Login} />
         <Route path="/Register" component={Register} />
@@ -26,7 +26,7 @@ function App() {
           <Route path="/rincian/laporan/:id" component={RincianLaporan} />
         </div>
       </Suspense>
-    </Router>
+    </Switch>
   );
 }
 

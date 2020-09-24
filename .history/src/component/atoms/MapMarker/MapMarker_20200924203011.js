@@ -2,7 +2,7 @@ import React from "react";
 import { useHistory } from "react-router-dom";
 import { useToast, Button } from "@chakra-ui/core";
 
-export function MapMarker({ p }) {
+export function MapMarker({ id, p }) {
   const toast = useToast();
   const history = useHistory();
 
@@ -10,6 +10,7 @@ export function MapMarker({ p }) {
     <>
       <div
         className="pin bounce"
+        id={p.jenis_kejahatan.jenis}
         onClick={() =>
           toast({
             title: `${p.jenis_kejahatan.jenis}`,

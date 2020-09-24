@@ -22,7 +22,7 @@ export function Navbar() {
   }, [history]);
 
   if (isRedirect) {
-    return <Redirect to="/" />;
+    return <Redirect to="/login" />;
   }
 
   return (

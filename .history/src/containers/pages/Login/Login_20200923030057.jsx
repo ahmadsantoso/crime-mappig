@@ -95,13 +95,7 @@ const Login = () => {
             </FormErrorMessage>
           </FormControl>
           <div className="auth-button">
-            {
-              !submit ? (
-                <Button type="submit" title="Login" />
-              ):(
-                <Button loading type="submit" title="Login" />
-              )
-            }
+            <Button type="submit" title="Login" />
           </div>
         </form>
       </div>

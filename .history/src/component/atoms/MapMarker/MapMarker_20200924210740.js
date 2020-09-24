@@ -2,7 +2,7 @@ import React from "react";
 import { useHistory } from "react-router-dom";
 import { useToast, Button } from "@chakra-ui/core";
 
-export function MapMarker({ p }) {
+export function MapMarker({ x }) {
   const toast = useToast();
   const history = useHistory();
 

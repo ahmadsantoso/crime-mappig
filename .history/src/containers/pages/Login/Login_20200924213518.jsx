@@ -99,7 +99,7 @@ const Login = () => {
               !submit ? (
                 <Button type="submit" title="Login" />
               ):(
-                <Button loading type="submit" title="Login" />
+                <Button isLoading type="submit" title="Login" />
               )
             }
           </div>

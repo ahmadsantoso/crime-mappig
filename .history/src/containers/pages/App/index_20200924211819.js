@@ -15,7 +15,7 @@ function App() {
   return (
     <Router>
       <Suspense fallback={"loading..."}>
-        <Route exact path="/" component={Login} />
+        <Route exact path="/Login" component={Login} />
         <Route path="/Register" component={Register} />
         <div>
           <Navbar />

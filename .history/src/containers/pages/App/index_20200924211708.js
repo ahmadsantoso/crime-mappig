@@ -6,16 +6,16 @@ import Laporan from "../Laporan/Laporan";
 import Analisa from "../Analisa/Analisa";
 import PengaduanDetail from "../PengaduanDetail/PengaduanDetail";
 import RincianLaporan from "../RincianLaporan/RincianLaporan";
-import { Navbar } from "../../../component/Navbar/Navbar";
 
 const Login = lazy(() => import("containers/pages/Login/Login"));
 const Register = lazy(() => import("containers/pages/Register/Register"));
+const Navbar = lazy(() => import("../../../component/Navbar/Navbar"))
 
 function App() {
   return (
     <Router>
       <Suspense fallback={"loading..."}>
-        <Route exact path="/" component={Login} />
+        <Route exact path="/Login" component={Login} />
         <Route path="/Register" component={Register} />
         <div>
           <Navbar />

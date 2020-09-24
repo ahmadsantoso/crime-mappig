@@ -54,7 +54,7 @@ const Register = () => {
             <div className="auth-card">
                 <p className="auth-title">Register</p>
                 <form onSubmit={handleSubmit(isRegister)}>
-                    <FormControl isInvalid={errors.emailInput}>
+                    <FormControl>
                         <input
                             className="input"
                             id="email"
@@ -72,7 +72,7 @@ const Register = () => {
                                 "Your input must be an email"}
                         </FormErrorMessage>
                     </FormControl>
-                    <FormControl isInvalid={errors.passwordInput}>
+                    <FormControl>
                         <input
                             className="input"
                             id="password"
@@ -92,16 +92,9 @@ const Register = () => {
                         </FormErrorMessage>
                     </FormControl>
                     <div className="auth-button">
-                        {!submit ? (
-                            <Button type="submit"
-                                title="Create Account"
-                            />
-                        ):(
-                            <Button loading type="submit"
-                                title="Create Account"
-                            />
-                        )
-                        }
+                        <Button type="submit"
+                            title="Create Account"
+                        />
                     </div>
                 </form>
             </div>
